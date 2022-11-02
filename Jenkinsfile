@@ -16,7 +16,7 @@ pipeline {
         stage('Publish') {
             steps {
                 script {
-                    docker.withRegistry('https://hub.docker.com/repository/docker/lnoowak/jenkins', 'dockerhub') {
+                    docker.withRegistry('lnoowak/jenkins', 'dockerhub') {
                         appImage.push()
                     }
                 }
