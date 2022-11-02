@@ -9,15 +9,15 @@ pipeline {
         stage('Build docker image') {
             steps {
                 script {
-                    appImage = docker.build('sample-app:latest', '--build-arg SERVER_PORT=9000 .') + ":$BUILD_NUMBER"
+                    appImage = docker.build('sample-app:latest', '--build-arg SERVER_PORT=9000 .')
                 }
             }
         }
         stage('Publish') {
             steps {
                 script {
-                    docker.withRegistry('lnoowak/jenkins', 'dockerhub') {
-                        dockerImage.push()
+                    docker.withRegistry('https://hub.docker.com/repository/docker/lnoowak/jenkins', 'dockerhub') {
+                        appImage.push()
                     }
                 }
             }
