@@ -9,7 +9,7 @@ pipeline {
         stage('Build docker image') {
             steps {
                 script {
-                    appImage = docker.build('sample-app:latest', '--build-arg SERVER_PORT=9000 .')
+                    appImage = docker.build('sample-app:latest', '--build-arg SERVER_PORT=9000 .') + ":$BUILD_NUMBER"
                 }
             }
         }
