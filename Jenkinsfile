@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'lesson2', url: 'https://github.com/grabowski-d/jenkins-loves-docker.git'
+                git branch: 'jenkins_lesson2', url: 'https://github.com/lnoowak/jenkins_lesson2.git'
             }
         }
         stage('Build docker image') {
@@ -16,7 +16,7 @@ pipeline {
         stage('Publish') {
             steps {
                 script {
-                    docker.withRegistry('https://registry.example.com', 'credentials-id') {
+                    docker.withRegistry('https://hub.docker.com/repository/docker/lnoowak/jenkins', 'dockerhub') {
                         appImage.push()
                     }
                 }
