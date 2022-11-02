@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('lnoowak/jenkins', 'dockerhub') {
-                        appImage.push()
+                        dockerImage.push()
                     }
                 }
             }
